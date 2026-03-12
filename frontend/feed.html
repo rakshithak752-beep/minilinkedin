@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed | Mini AI LinkedIn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#0a66c2', primaryHover: '#004182', secondary: '#f3f2ef', textDark: '#191919', textMuted: '#666666' } } } }
+  </script>
+</head>
+<body class="bg-secondary text-textDark font-sans pt-20 pb-10 min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm fixed w-full z-50 top-0 left-0 h-16 flex items-center px-4 md:px-8 border-b border-gray-200">
+    <div class="max-w-6xl mx-auto w-full flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <a href="feed.html" class="flex flex-col items-center">
+          <div class="bg-primary text-white font-bold text-xl rounded px-2 tracking-tight">in</div>
+          <span class="text-xs text-primary font-bold mt-[-2px]">AI</span>
+        </a>
+        <div class="hidden md:flex relative ml-4">
+          <input type="text" placeholder="Search" class="bg-[#EEF3F8] text-sm rounded-md px-10 py-1.5 focus:outline-none focus:ring-1 focus:ring-primary w-64" disabled>
+        </div>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="feed.html" class="flex flex-col items-center text-textDark border-b-2 border-primary pb-1">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23 9v2h-2v7a3 3 0 01-3 3h-4v-6h-4v6H6a3 3 0 01-3-3v-7H1V9l11-7z"></path></svg>
+          <span class="text-xs hidden md:block">Home</span>
+        </a>
+        <div class="relative group cursor-pointer">
+          <div class="flex flex-col items-center text-gray-500 hover:text-textDark pb-1" id="notif-bell">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 19h-2.83l-2-2H6.83l-2 2H2v-2h1.17l2-2V9a6.85 6.85 0 016.83-7A6.85 6.85 0 0118.83 9v6l2 2zM12 23a3.11 3.11 0 01-3-3h6a3.11 3.11 0 01-3 3z"></path></svg>
+            <span class="text-xs hidden md:block">Notifications</span>
+            <span id="notif-badge" class="absolute top-0 right-1 md:right-3 bg-red-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">!</span>
+          </div>
+          <!-- Notif Dropdown -->
+          <div id="notif-dropdown" class="hidden absolute right-0 mt-2 w-72 bg-white border border-gray-200 shadow-lg rounded-md py-2 z-50">
+            <div class="px-4 py-2 border-b font-medium">Notifications</div>
+            <div id="notif-list" class="max-h-80 overflow-y-auto">
+              <div class="px-4 py-3 text-sm text-gray-500 text-center">No new notifications</div>
+            </div>
+          </div>
+        </div>
+        <div class="relative group cursor-pointer">
+          <div class="flex flex-col items-center text-gray-500 hover:text-textDark" id="profile-menu-btn">
+            <img id="nav-profile-img" src="https://ui-avatars.com/api/?name=User&background=random" class="w-6 h-6 rounded-full" alt="Me">
+            <span class="text-xs hidden md:flex items-center gap-1">Me <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"></path></svg></span>
+          </div>
+          <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 shadow-lg rounded-md py-2 z-50">
+            <a href="profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">View Profile</a>
+            <button id="logout-btn" class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Feed Body -->
+  <main class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row gap-6">
+    <!-- Left Sidebar: Mini Profile -->
+    <aside class="hidden md:block w-56">
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden relative">
+        <div class="h-14 bg-gray-200 absolute top-0 w-full z-0"></div> <!-- banner -->
+        <div class="pt-8 px-4 pb-4 relative z-10 flex flex-col items-center border-b border-gray-100">
+          <a href="profile.html">
+            <img id="sidebar-profile-img" src="https://ui-avatars.com/api/?name=User&background=random" class="w-16 h-16 rounded-full border-2 border-white shadow-sm" alt="Profile">
+          </a>
+          <a href="profile.html" class="mt-2 text-md font-semibold text-textDark hover:underline" id="sidebar-name">Loading...</a>
+          <p class="text-xs text-textMuted text-center mt-1" id="sidebar-headline">Welcome back</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Center Feed -->
+    <section class="flex-1 max-w-xl">
+      <!-- Create Post Box -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
+        <div class="flex gap-3">
+          <img id="create-post-img" src="https://ui-avatars.com/api/?name=User" class="w-12 h-12 rounded-full" alt="Profile">
+          <div class="flex-1">
+            <textarea id="post-caption" rows="2" placeholder="Start a post, or type a skill like 'JavaScript'..." class="w-full resize-none outline-none text-gray-800 border bg-gray-50 border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-100 focus:bg-white focus:border-gray-400 transition" required></textarea>
+            
+            <!-- Image Preview -->
+            <div id="image-preview-container" class="hidden mt-2 relative">
+              <img id="image-preview" src="" class="w-full max-h-64 object-cover rounded-lg border border-gray-200">
+              <button type="button" id="remove-image-btn" class="absolute top-2 right-2 bg-gray-800 text-white rounded-full p-1 opacity-80 hover:opacity-100">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+              </button>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="flex justify-between items-center mt-3 pt-2">
+              <div class="flex gap-2">
+                <label for="post-image" class="cursor-pointer flex items-center gap-1 p-2 rounded hover:bg-gray-100 text-textMuted transition">
+                  <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4H5a3 3 0 00-3 3v10a3 3 0 003 3h14a3 3 0 003-3V7a3 3 0 00-3-3zm1 13a1 1 0 01-1 1H5a1 1 0 01-1-1v-5.36l3.65-3.65a2 2 0 012.83 0l3 3L16.65 8.8a2 2 0 012.83 0L20 9.87zM6 9a2 2 0 110-4 2 2 0 010 4z"></path></svg>
+                  <span class="text-sm font-medium">Photo</span>
+                  <input type="file" id="post-image" accept="image/*" class="hidden">
+                </label>
+                <!-- AI Enhance Button -->
+                <button type="button" id="enhance-btn" class="flex items-center gap-1 p-2 rounded hover:bg-purple-50 text-purple-600 transition" title="Enhance with AI">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                  <span class="text-sm font-medium hidden sm:inline">Enhance Caption</span>
+                </button>
+              </div>
+              <button id="submit-post-btn" class="bg-primary text-white font-medium rounded-full px-5 py-1.5 hover:bg-[#004182] transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" disabled>Post</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feed Container -->
+      <div id="posts-container" class="space-y-4">
+        <!-- Posts will be generated by JS -->
+        <div class="flex justify-center p-8 text-gray-400">Loading posts...</div>
+      </div>
+    </section>
+
+    <!-- Right Sidebar -->
+    <aside class="hidden lg:block w-72 space-y-4">
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+        <h2 class="font-semibold text-textDark mb-3">Add to your AI network</h2>
+        <!-- Simple static suggestions for UI sake -->
+        <div class="flex gap-3 mb-3">
+          <img src="https://ui-avatars.com/api/?name=Sam+Altman" class="w-12 h-12 rounded-full">
+          <div>
+            <div class="font-medium text-sm">Sam Altman</div>
+            <div class="text-xs text-textMuted text-ellipsis overflow-hidden break-all line-clamp-2">CEO at AI Startup | Python enthusiast</div>
+            <button class="mt-1 border border-gray-500 rounded-full px-4 py-1 text-sm font-medium text-gray-600 hover:bg-gray-100 transition flex gap-1 items-center">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg> Connect
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-xs text-center text-gray-500 mt-4 px-4 leading-relaxed">
+        Mini AI LinkedIn &copy; 2026. Built with Vanilla JS, Tailwind, Node, and Groq.
+      </div>
+    </aside>
+  </main>
+
+  <script type="module" src="js/firebaseConfig.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/feed.js"></script>
+</body>
+</html>

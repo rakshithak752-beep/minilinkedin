@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini AI LinkedIn - Connect & Grow</title>
+  <meta name="description" content="Mini AI LinkedIn is a professional networking platform powered by AI to connect, share ideas, and grow your career.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Main custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: '#0a66c2',
+            primaryHover: '#004182',
+            secondary: '#f3f2ef',
+            textDark: '#191919',
+            textMuted: '#666666'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-secondary text-textDark font-sans relative flex flex-col min-h-screen">
+  
+  <!-- Navigation placeholder (will be rendered via JS or hardcoded per page) -->
+  <nav class="bg-white shadow-sm fixed w-full z-50 top-0 left-0 h-16 flex items-center px-4 md:px-8 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <!-- Logo -->
+        <a href="index.html" class="flex flex-col items-center">
+          <div class="bg-primary text-white font-bold text-xl rounded px-2 tracking-tight">in</div>
+          <span class="text-xs text-primary font-bold mt-[-2px]">AI</span>
+        </a>
+        <div class="hidden md:flex relative ml-4">
+          <input type="text" placeholder="Search" class="bg-[#EEF3F8] text-sm rounded-md px-10 py-1.5 focus:outline-none focus:ring-1 focus:ring-primary w-64" disabled>
+          <svg class="w-4 h-4 text-gray-500 absolute left-3 top-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </div>
+      </div>
+      <!-- Right Nav Items for Unauthenticated -->
+      <div id="nav-unauth" class="flex items-center gap-4">
+        <a href="signup.html" class="text-textMuted font-medium hover:text-textDark transition">Join now</a>
+        <a href="login.html" class="text-primary font-medium border border-primary rounded-full px-5 py-1.5 hover:bg-blue-50 transition">Sign in</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Splash Content -->
+  <main class="flex-grow flex flex-col items-center justify-center mt-16 px-4">
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10">
+      <div class="flex-1 space-y-6">
+        <h1 class="text-4xl md:text-5xl font-light text-[#8f5849] leading-tight">
+          Welcome to your AI-powered professional community
+        </h1>
+        <p class="text-lg text-textMuted">
+          Enhance your profile and posts with AI. Connect with others sharing your skills automatically.
+        </p>
+        <div class="flex flex-col gap-3 max-w-sm">
+           <a href="signup.html" class="bg-primary text-white font-medium text-center rounded-full px-6 py-3 hover:bg-primaryHover transition w-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 ease-out duration-200 relative overflow-hidden group">
+            <span class="relative z-10">Join for free</span>
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition duration-300 rounded-full"></div>
+           </a>
+        </div>
+      </div>
+      <div class="flex-1 flex justify-center">
+        <!-- Abstract generic illustration representing network/AI -->
+        <div class="w-72 h-72 md:w-96 md:h-96 relative">
+          <div class="absolute inset-0 bg-gradient-to-tr from-primary to-blue-300 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+          <img src="https://static.licdn.com/aero-v1/sc/h/dxf91zhqd2z6b0bwg85ktm5s4" alt="Network Illustration" class="w-full h-full object-contain relative z-10 hidden md:block">
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile | Mini AI LinkedIn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#0a66c2', primaryHover: '#004182', secondary: '#f3f2ef', textDark: '#191919', textMuted: '#666666' } } } }
+  </script>
+</head>
+<body class="bg-secondary text-textDark font-sans pt-20 pb-10 min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm fixed w-full z-50 top-0 left-0 h-16 flex items-center px-4 md:px-8 border-b border-gray-200">
+    <div class="max-w-6xl mx-auto w-full flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <a href="feed.html" class="flex flex-col items-center">
+          <div class="bg-primary text-white font-bold text-xl rounded px-2 tracking-tight">in</div>
+          <span class="text-xs text-primary font-bold mt-[-2px]">AI</span>
+        </a>
+        <div class="hidden md:flex relative ml-4">
+          <input type="text" placeholder="Search" class="bg-[#EEF3F8] text-sm rounded-md px-10 py-1.5 focus:outline-none focus:ring-1 focus:ring-primary w-64" disabled>
+        </div>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="feed.html" class="flex flex-col items-center text-gray-500 hover:text-textDark pb-1">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23 9v2h-2v7a3 3 0 01-3 3h-4v-6h-4v6H6a3 3 0 01-3-3v-7H1V9l11-7z"></path></svg>
+          <span class="text-xs hidden md:block">Home</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Profile Body -->
+  <main class="max-w-4xl mx-auto px-4 flex flex-col gap-4">
+    <section class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden relative pb-6">
+      <!-- Banner -->
+      <div class="h-32 bg-gradient-to-r from-blue-300 to-primary w-full relative z-0"></div>
+      
+      <div class="px-6 relative z-10 flex justify-between items-start">
+        <div class="-mt-16 w-32 h-32 rounded-full border-4 border-white bg-white overflow-hidden shadow-md">
+          <img id="profile-picture" src="https://ui-avatars.com/api/?name=Loading" class="w-full h-full object-cover" alt="Profile">
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a href="edit-profile.html" id="edit-profile-btn" class="hidden text-gray-600 border border-gray-500 hover:bg-gray-100 font-medium rounded-full px-4 py-1.5 transition">
+            <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg> Edit
+          </a>
+        </div>
+      </div>
+
+      <div class="px-6 mt-3">
+        <h1 id="profile-name" class="text-2xl font-semibold text-textDark">Loading Profile...</h1>
+        <p id="profile-headline" class="text-base text-textDark mt-1">---</p>
+        <p id="profile-location" class="text-sm text-textMuted mt-1">---</p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 space-y-3">
+      <h2 class="text-xl font-semibold text-textDark">About</h2>
+      <p id="profile-bio" class="text-sm text-gray-800 whitespace-pre-line leading-relaxed">No bio available.</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 space-y-3">
+      <h2 class="text-xl font-semibold text-textDark">Skills</h2>
+      <div id="profile-skills" class="flex flex-wrap gap-2 text-sm">
+        <span class="text-gray-500 italic">No skills listed yet.</span>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="js/firebaseConfig.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/profile.js"></script>
+</body>
+</html>

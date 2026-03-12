@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | Mini AI LinkedIn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary: '#0a66c2', primaryHover: '#004182', secondary: '#f3f2ef', textDark: '#191919', textMuted: '#666666' } } }
+    }
+  </script>
+</head>
+<body class="bg-secondary text-textDark font-sans relative flex flex-col min-h-screen items-center justify-center">
+  
+  <div class="mb-6 text-center">
+    <a href="index.html" class="flex flex-col items-center">
+      <div class="bg-primary text-white font-bold text-3xl rounded px-3 py-1 tracking-tight">in</div>
+      <span class="text-sm text-primary font-bold mt-[-2px]">AI</span>
+    </a>
+    <h1 class="text-3xl font-semibold mt-6 text-gray-800">Make the most of your professional life</h1>
+  </div>
+
+  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md border border-gray-200">
+    <form id="signup-form" class="space-y-4">
+      <div>
+        <label class="block text-sm text-gray-600 mb-1">First & Last Name</label>
+        <input type="text" id="name" required class="w-full border border-gray-600 rounded px-3 py-2 text-textDark focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary h-12">
+      </div>
+      <div>
+        <label class="block text-sm text-gray-600 mb-1">Email</label>
+        <input type="email" id="email" required class="w-full border border-gray-600 rounded px-3 py-2 text-textDark focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary h-12">
+      </div>
+      <div>
+        <label class="block text-sm text-gray-600 mb-1">Password (6 or more characters)</label>
+        <input type="password" id="password" required minlength="6" class="w-full border border-gray-600 rounded px-3 py-2 text-textDark focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary h-12">
+      </div>
+      
+      <p class="text-xs text-gray-500 text-center leading-tight">By clicking Agree & Join, you agree to the Mini AI LinkedIn User Agreement, Privacy Policy, and Cookie Policy.</p>
+      
+      <button type="submit" id="submit-btn" class="w-full bg-primary text-white rounded-full font-medium py-3 hover:bg-[#004182] transition duration-200">
+        Agree & Join
+      </button>
+      
+      <div id="error-msg" class="text-red-600 text-sm text-center hidden"></div>
+    </form>
+    
+    <div class="mt-6 text-center text-sm">
+      <p>Already on Mini AI LinkedIn? <a href="login.html" class="text-primary font-semibold hover:underline">Sign in</a></p>
+    </div>
+  </div>
+
+  <script type="module" src="js/firebaseConfig.js"></script>
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>
